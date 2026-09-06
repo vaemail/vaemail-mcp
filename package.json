@@ -1,0 +1,40 @@
+{
+  "name": "vaemail",
+  "version": "1.0.0",
+  "description": "Email infrastructure for AI agents: MCP server and CLI for VaEmail. Send email, authenticate domains, track delivery, diagnose deliverability.",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "email",
+    "email-api",
+    "transactional-email",
+    "ai-agent",
+    "agent",
+    "smtp",
+    "deliverability",
+    "claude",
+    "vaemail"
+  ],
+  "homepage": "https://vaemail.fr/agents",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "bin": {
+    "vaemail": "bin/vaemail.js",
+    "vaemail-mcp": "bin/vaemail-mcp.js"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vaemail/vaemail-mcp.git"
+  }
+}
