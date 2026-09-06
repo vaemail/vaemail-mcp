@@ -1,0 +1,26 @@
+# Déclare (ou met à jour) le serveur au registre MCP officiel avec l'identité OIDC du
+# dépôt : le namespace io.github.vaemail est accordé d'office aux dépôts de l'organisation,
+# sans session personnelle. À lancer à la main (Actions → registre-mcp → Run workflow),
+# ou : gh workflow run registre-mcp --repo vaemail/vaemail-mcp
+name: registre-mcp
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  registre:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Installer mcp-publisher
+        run: |
+          curl -L "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_linux_amd64.tar.gz" | tar xz mcp-publisher
+          sudo mv mcp-publisher /usr/local/bin/
+      - run: mcp-publisher login github-oidc
+      - run: mcp-publisher validate
+      - run: mcp-publisher publish
+      - name: Vérifier
+        run: |
+          sleep 5
+          curl -fsS "https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.vaemail/vaemail" | head -c 600; echo
