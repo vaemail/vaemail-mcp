@@ -10,10 +10,10 @@ European infrastructure: servers in Germany, sending through Amazon SES Europe.
 
 ```bash
 # Claude Code
-claude mcp add vaemail --env VAEMAIL_API_KEY=swm_your_key -- npx -y vaemail-mcp
+claude mcp add vaemail --env VAEMAIL_API_KEY=swm_your_key -- npx -y vaemail mcp
 
 # Any MCP client
-npx -y vaemail-mcp
+npx -y vaemail mcp
 ```
 
 Or as a config block:
@@ -23,7 +23,7 @@ Or as a config block:
   "mcpServers": {
     "vaemail": {
       "command": "npx",
-      "args": ["-y", "vaemail-mcp"],
+      "args": ["-y", "vaemail", "mcp"],
       "env": { "VAEMAIL_API_KEY": "swm_your_key" }
     }
   }
@@ -102,6 +102,12 @@ Add `--json` to any command for machine-readable output.
 - OpenAPI specification: <https://app.vaemail.fr/openapi.json>
 - Capabilities endpoint: <https://app.vaemail.fr/api/v1/capabilities>
 - Agent documentation: <https://vaemail.fr/agents>
+
+## Skill and examples
+
+- Agent skill (rules an agent should follow before its first call): `npx skills add vaemail/skills`, source https://github.com/vaemail/skills
+- Examples for curl, Node, Python, Claude Code, Codex, OpenAI Agents, LangChain, CrewAI and n8n: https://github.com/vaemail/examples
+- Registry entry: `io.github.vaemail/vaemail` (see `server.json`)
 
 ## Dependencies
 

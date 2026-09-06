@@ -1,0 +1,36 @@
+# Publie le paquet npm avec attestation de provenance, puis le déclare au registre MCP
+# officiel. Se déclenche sur un tag v*. Prérequis côté GitHub : « Trusted publishing »
+# activé sur npmjs.com pour ce dépôt (sinon poser le secret NPM_TOKEN), et l'org
+# GitHub `vaemail` propriétaire du dépôt (le namespace io.github.vaemail en dépend).
+name: publish
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+      - run: npm test
+      - run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+  mcp-registry:
+    needs: npm
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install mcp-publisher
+        run: |
+          curl -L "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_linux_amd64.tar.gz" | tar xz mcp-publisher
+          sudo mv mcp-publisher /usr/local/bin/
+      - run: mcp-publisher login github-oidc
+      - run: mcp-publisher validate
+      - run: mcp-publisher publish

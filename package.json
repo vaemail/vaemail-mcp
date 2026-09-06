@@ -13,7 +13,12 @@
     "smtp",
     "deliverability",
     "claude",
-    "vaemail"
+    "vaemail",
+    "mcp-server",
+    "cli",
+    "email-for-ai-agents",
+    "email-infrastructure",
+    "eu"
   ],
   "homepage": "https://vaemail.fr/agents",
   "license": "MIT",
@@ -36,5 +41,13 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vaemail/vaemail-mcp.git"
-  }
+  },
+  "mcpName": "io.github.vaemail/vaemail",
+  "bugs": {
+    "url": "https://github.com/vaemail/vaemail-mcp/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "VaEmail (Agence SW)"
 }

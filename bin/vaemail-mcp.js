@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Serveur MCP VaEmail. Se branche sur un agent par stdio.
 //
-//   claude mcp add vaemail --env VAEMAIL_API_KEY=swm_... -- npx -y vaemail-mcp
+//   claude mcp add vaemail --env VAEMAIL_API_KEY=swm_... -- npx -y vaemail mcp
 //
 // Variables lues : VAEMAIL_API_KEY (obligatoire pour tout sauf capabilities)
 // et VAEMAIL_BASE_URL (pour pointer ailleurs que la production).

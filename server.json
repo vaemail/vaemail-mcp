@@ -1,0 +1,39 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.vaemail/vaemail",
+  "description": "Email infrastructure for AI agents: send email, authenticate sending domains, track delivery, diagnose deliverability. European infrastructure, zero-dependency server.",
+  "repository": {
+    "url": "https://github.com/vaemail/vaemail-mcp",
+    "source": "github"
+  },
+  "websiteUrl": "https://vaemail.fr/agents",
+  "version": "1.0.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "vaemail",
+      "version": "1.0.0",
+      "transport": { "type": "stdio" },
+      "runtimeHint": "npx",
+      "packageArguments": [
+        { "type": "positional", "value": "mcp", "description": "Start the MCP server (the same package also provides the `vaemail` CLI)." }
+      ],
+      "environmentVariables": [
+        {
+          "name": "VAEMAIL_API_KEY",
+          "description": "VaEmail API key (created in the dashboard, ideally scoped and capped for this agent). Required for every tool except vaemail_capabilities.",
+          "isRequired": true,
+          "isSecret": true,
+          "format": "string"
+        },
+        {
+          "name": "VAEMAIL_BASE_URL",
+          "description": "API base URL. Default https://app.vaemail.fr.",
+          "isRequired": false,
+          "isSecret": false,
+          "format": "string"
+        }
+      ]
+    }
+  ]
+}
