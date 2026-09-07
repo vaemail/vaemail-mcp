@@ -28,10 +28,6 @@ jobs:
             echo "vaemail@$VERSION est deja publie sur npm : rien a faire."
             exit 0
           fi
-          if [ -z "$NODE_AUTH_TOKEN" ]; then
-            echo "::error::Aucune authentification npm (secret NPM_TOKEN absent et trusted publishing non actif). Publication impossible." >&2
-            exit 1
-          fi
           npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
