@@ -1,5 +1,7 @@
 # VaEmail — email infrastructure for AI agents
 
+[![Listed on mcpservers.org](https://mcpservers.org/badge.svg)](https://mcpservers.org/servers/vaemail/vaemail-mcp)
+
 MCP server and CLI for [VaEmail](https://vaemail.fr). Give an agent the ability to
 send email, authenticate a sending domain, track delivery and diagnose
 deliverability — without a human reading a dashboard in between.
