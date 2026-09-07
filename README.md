@@ -92,6 +92,46 @@ vaemail mcp                           # run the MCP server on stdio
 
 Add `--json` to any command for machine-readable output.
 
+## Use it as a library
+
+The same client the MCP server and the CLI run on is exported, so an application
+can call VaEmail directly. No dependencies.
+
+```js
+import { VaEmail } from 'vaemail';
+
+const client = new VaEmail({ apiKey: process.env.VAEMAIL_API_KEY });
+
+await client.send(
+  {
+    to: 'customer@example.com',
+    subject: 'Your order is on its way',
+    html: '<p>Tracking number: 1Z999</p>',
+  },
+  'order-4711', // idempotency key: safe to replay for 24 hours
+);
+```
+
+Errors carry what to do next, not just a status code:
+
+```js
+try {
+  await client.send({ to: 'customer@example.com' });
+} catch (error) {
+  error.code;        // DOMAIN_NOT_VERIFIED
+  error.retryable;   // false
+  error.pourAgent(); // reason, corrective action, whether to retry
+}
+```
+
+Also: `capabilities()`, `health()`, `validate()`, `getMessage()`,
+`listMessages()`, `listDomains()`, `addDomain()`, `verifyDomain()`,
+`dnsRecords()`, `diagnoseDeliverability()`, `listSuppressions()`, `usage()`,
+`auditLogs()`.
+
+A Python SDK with the same surface is available: `pip install vaemail`
+(<https://github.com/vaemail/vaemail-python>).
+
 ## Environment
 
 | Variable | Meaning |

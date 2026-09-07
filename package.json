@@ -18,7 +18,10 @@
     "cli",
     "email-for-ai-agents",
     "email-infrastructure",
-    "eu"
+    "eu",
+    "sdk",
+    "javascript-sdk",
+    "node"
   ],
   "homepage": "https://vaemail.fr/agents",
   "license": "MIT",
@@ -49,5 +52,10 @@
   "publishConfig": {
     "access": "public"
   },
-  "author": "VaEmail (Agence SW)"
+  "author": "VaEmail (Agence SW)",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js"
+  }
 }
