@@ -42,6 +42,10 @@ npx vaemail init
 
 | Tool | What it does |
 | --- | --- |
+| `vaemail_envoyer_newsletter` | Newsletter to a contact list, in French: resolves the list by name, creates, tests, schedules or sends. No "quand" = draft. |
+| `vaemail_ou_en_est_ma_campagne` | Where a campaign stands, in plain sentences: scheduled, sending, sent, opens, clicks. |
+| `vaemail_qui_est_abonne` | Lists by folder with subscriber counts, or the lists and status of one address. |
+| `vaemail_importer_contacts` | Adds contacts to a list (created if missing). Never re-subscribes an unsubscribed address. |
 | `vaemail_capabilities` | What the service supports. No API key needed. |
 | `vaemail_send_email` | Queue a transactional email, return its id. |
 | `vaemail_validate_email` | Dry run: would this send go out, and what would block it. |

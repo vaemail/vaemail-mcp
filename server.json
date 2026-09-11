@@ -7,12 +7,12 @@
     "source": "github"
   },
   "websiteUrl": "https://vaemail.fr/agents",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "vaemail",
-      "version": "1.0.2",
+      "version": "1.1.0",
       "transport": {
         "type": "stdio"
       },
